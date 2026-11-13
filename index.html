@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events This Week | College of Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="events-style.css">
+</head>
+<body>
+
+<div class="strata" aria-hidden="true"></div>
+
+<div class="holiday-decor" aria-hidden="true">
+  <svg class="holiday-garland" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,52 C120,10 180,90 300,52 S500,18 620,52 S860,94 1000,52 S1120,18 1200,52"/>
+    <path d="M0,72 C120,28 180,110 300,72 S500,36 620,72 S860,110 1000,72 S1120,36 1200,72"/>
+  </svg>
+
+  <svg class="holiday-star" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M50 8 L59 37 L90 50 L59 63 L50 92 L41 63 L10 50 L41 37 Z"/>
+    <circle cx="50" cy="50" r="8"/>
+  </svg>
+
+  <span class="holiday-ornament ornament-red"></span>
+  <span class="holiday-ornament ornament-gold"></span>
+  <span class="holiday-ornament ornament-green"></span>
+  <span class="holiday-ornament ornament-last"></span>
+
+  <span class="holiday-flake flake-one">✦</span>
+  <span class="holiday-flake flake-two">✦</span>
+  <span class="holiday-flake flake-three">✦</span>
+  <span class="holiday-flake flake-four">✦</span>
+
+  <svg class="santa-cap" viewBox="0 0 84 60" aria-hidden="true">
+    <path d="M8 46 L30 18 L54 18 L76 46 L8 46 Z" fill="#d63b46"/>
+    <path d="M26 18 L42 2 L58 18" fill="none" stroke="#f3ca67" stroke-width="4" stroke-linecap="round"/>
+    <path d="M24 18 L18 18 L9 32 L18 32 Z" fill="#d63b46"/>
+    <path d="M60 18 L66 18 L75 32 L66 32 Z" fill="#d63b46"/>
+    <path d="M8 46 H76" stroke="#fff8e9" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<button id="backBtn" onclick="goBack()" aria-label="Back to previous page">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15 5 L8 12 L15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+  
+<script>
+  let idleTimer;
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+
+    idleTimer = setTimeout(() => {
+      history.back();
+    }, 60000); // 1 minute
+  }
+
+  // Reset the timer whenever the user does something
+  ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'].forEach(event => {
+    document.addEventListener(event, resetIdleTimer);
+  });
+
+  // Start the timer
+  resetIdleTimer();
+</script>
+
+<div class="container">
+  <div class="brand-panel">
+    <div class="mark">
+      <span class="mark-line">TW Lewis</span>
+      <span class="brand-school">College of Business</span>
+    </div>
+  </div>
+  <h1>Events This Week</h1>
+  <p class="subtitle">Career fairs, info sessions, and workshops happening around the College of Business.</p>
+  <p class="week-of">Week of <span id="week-of-label">—</span></p>
+
+  <div class="timeline" id="timeline"></div>
+
+  <p class="board-footer">Updated every Monday · past events are removed</p>
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+<script src="events-script.js"></script>
+</body>
+</html>
